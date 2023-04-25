@@ -25,8 +25,8 @@ class ProductManager {
     
     }
 
-    getProductByid = (id, products) =>{
-        const product = products.find((product) => product.id === id);
+    getProductByid = (id,product) =>{
+        this.products.find((id) => product.id === id);
         if (!product) {
         throw new Error(`Producto con ID ${id} no encontrado.`);
         }
@@ -43,4 +43,6 @@ class ProductManager {
 const manejadorproductos = new ProductManager()
 manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
 manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
+manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
+manejadorproductos.getProductByid(6,"sds")
 console.log(manejadorproductos.getProducts());
