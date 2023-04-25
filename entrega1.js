@@ -24,11 +24,23 @@ class ProductManager {
         this.products.push(product);
     
     }
+
+    getProductByid = (id, products) =>{
+        const product = products.find((product) => product.id === id);
+        if (!product) {
+        throw new Error(`Producto con ID ${id} no encontrado.`);
+        }
+        return product;
+    }
+ 
+
+    }
     
     
    
-}
+
 
 const manejadorproductos = new ProductManager()
+manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
 manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
 console.log(manejadorproductos.getProducts());
