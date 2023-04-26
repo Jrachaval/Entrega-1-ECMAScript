@@ -16,22 +16,28 @@ class ProductManager {
             code,
             stock                
         }
+        if (this.products.some(p => p.code === product.code)) {
+            throw new Error("repeated code");
+          }
         if (this.products.length===0){
             product.id = 1;
         }
-        else {product.id = this.products [this.products.length - 1].id + 1};  
+        else {product.id = this.products [this.products.length - 1].id + 1}
+        
+        
                  
         this.products.push(product);
     
     }
-
-    getProductByid = (id,product) =>{
-        this.products.find((id) => product.id === id);
+    getProductById(id) {
+        const product = this.products.find(p => p.id === id);
         if (!product) {
-        throw new Error(`Producto con ID ${id} no encontrado.`);
+          throw new Error("Product no found");
         }
         return product;
-    }
+      }
+
+  
  
 
     }
@@ -40,9 +46,12 @@ class ProductManager {
    
 
 
-const manejadorproductos = new ProductManager()
-manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
-manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
-manejadorproductos.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
-manejadorproductos.getProductByid(6,"sds")
-console.log(manejadorproductos.getProducts());
+const productmanager = new ProductManager()
+productmanager.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "fre123", 25)
+productmanager.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "dsa123", 25)
+console.log(productmanager.getProducts());
+
+productmanager.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
+productmanager.addProduct("producto prueba", "este es un producto prueba", 200, "no image", "abc123", 25)
+
+
